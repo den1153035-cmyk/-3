@@ -34,7 +34,6 @@
             font-weight: 700;
             padding: 10px 20px;
             border-radius: 30px;
-            transition: all 0.3s;
         }
 
         nav a:hover {
@@ -49,12 +48,11 @@
             font-size: 2.8rem; 
         }
 
-        .muscle-group { margin: 0 5% 60px; }
-
         .exercises-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
+            padding: 0 5%;
         }
 
         .card {
@@ -63,6 +61,7 @@
             overflow: hidden;
             border: 6px solid #ff8ec8;
             transition: 0.4s;
+            cursor: pointer;
         }
 
         .card:hover {
@@ -81,6 +80,37 @@
             color: #c71585;
             text-align: center;
         }
+
+        /* Модальне вікно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 30px;
+            border: 8px solid #ff69b4;
+            position: relative;
+            text-align: left;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            cursor: pointer;
+            color: #ff1493;
+        }
     </style>
 </head>
 <body>
@@ -92,26 +122,61 @@
     </nav>
 
     <h2>💪 Вправи на м'язи</h2>
-    <div class="muscle-group">
-        <div class="exercises-grid">
-            <div class="card"><img src="https://i.imgur.com/5zL9pQm.jpg"><h3>Присідання з бантиком</h3></div>
-            <div class="card"><img src="https://i.imgur.com/X8vK9pL.jpg"><h3>Випади</h3></div>
-            <div class="card"><img src="https://i.imgur.com/9pLmXqR.jpg"><h3>Місток для сідниць</h3></div>
-            <div class="card"><img src="https://i.imgur.com/vX9kPqM.jpg"><h3>Підйом ніг</h3></div>
-            <div class="card"><img src="https://i.imgur.com/kP9mLqR.jpg"><h3>Ходьба на шкарпетках</h3></div>
+    <div class="exercises-grid">
+        <div class="card" onclick="showExercise('Присідання з бантиком', 'Стань прямо, ноги на ширині плечей. Присідай, ніби сідаєш на стілець. Спина рівна, коліна не виходять за носки. Зроби 3 підходи по 12 разів.')">
+            <img src="https://i.imgur.com/5zL9pQm.jpg"><h3>Присідання з бантиком</h3>
+        </div>
+        <div class="card" onclick="showExercise('Випади', 'Зроби крок вперед і опустися вниз, щоб обидва коліна були зігнуті під кутом 90°. Повернися у вихідне положення. По 10 разів на кожну ногу.')">
+            <img src="https://i.imgur.com/X8vK9pL.jpg"><h3>Випади</h3>
+        </div>
+        <div class="card" onclick="showExercise('Місток для сідниць', 'Ляж на спину, зігни ноги. Піднімай таз вгору, сильно стискаючи сідниці. Затримайся на 2 секунди вгорі.')">
+            <img src="https://i.imgur.com/9pLmXqR.jpg"><h3>Місток для сідниць</h3>
+        </div>
+        <div class="card" onclick="showExercise('Підйом ніг', 'Ляж на спину, руки вздовж тіла. Піднімай прямі ноги вгору і повільно опускай, не торкаючись підлоги.')">
+            <img src="https://i.imgur.com/vX9kPqM.jpg"><h3>Підйом ніг</h3>
         </div>
     </div>
 
     <h2>❤️ Кардіо та Танці</h2>
-    <div class="muscle-group">
-        <div class="exercises-grid">
-            <div class="card"><img src="https://i.imgur.com/8LmXqKp.jpg"><h3>K-Pop Танці</h3></div>
-            <div class="card"><img src="https://i.imgur.com/pQ9kLmX.jpg"><h3>Стрибки зі скакалкою</h3></div>
-            <div class="card"><img src="https://i.imgur.com/Xm9pLqR.jpg"><h3>Веселе кардіо</h3></div>
-            <div class="card"><img src="https://i.imgur.com/9vKpLmX.jpg"><h3>Танцювальні рухи</h3></div>
-            <div class="card"><img src="https://i.imgur.com/Lp9kXmQ.jpg"><h3>Біг на місці</h3></div>
+    <div class="exercises-grid">
+        <div class="card" onclick="showExercise('K-Pop Танці', 'Увімкни улюблену пісню і повторюй прості рухи. Танцюй 15–20 хвилин без зупинки.')">
+            <img src="https://i.imgur.com/8LmXqKp.jpg"><h3>K-Pop Танці</h3>
+        </div>
+        <div class="card" onclick="showExercise('Стрибки зі скакалкою', 'Стрибай через скакалку в легкому темпі. Початківцям — 30 секунд стрибків + 30 секунд відпочинок.')">
+            <img src="https://i.imgur.com/pQ9kLmX.jpg"><h3>Стрибки зі скакалкою</h3>
+        </div>
+        <div class="card" onclick="showExercise('Біг на місці', 'Біжи на місці, високо піднімаючи коліна. Додай рухи руками для більшого ефекту.')">
+            <img src="https://i.imgur.com/Lp9kXmQ.jpg"><h3>Біг на місці</h3>
         </div>
     </div>
 
+    <!-- Модальне вікно -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <h2 id="modalTitle" style="color:#ff1493; text-align:center;"></h2>
+            <p id="modalDesc" style="font-size:1.3rem; line-height:1.7;"></p>
+            <p style="text-align:center; margin-top:20px; color:#ff69b4;">
+                💖 Виконуй акуратно і з посмішкою!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(title, description) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = description;
+            document.getElementById('exerciseModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('exerciseModal').style.display = 'none';
+        }
+
+        // Закриття при кліку поза вікном
+        document.getElementById('exerciseModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 </body>
 </html>
