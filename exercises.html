@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вправи — КіттіФіт 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #fff0f8, #ffe4f3);
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        nav {
+            background: #ff69b4;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: white;
+            color: #ff1493;
+        }
+
+        h2 { 
+            text-align: center; 
+            color: #ff1493; 
+            margin: 50px 0 30px; 
+            font-size: 2.8rem; 
+        }
+
+        .muscle-group { margin: 0 5% 60px; }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 6px solid #ff8ec8;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 15px;
+            background: #ffe4f3;
+            color: #c71585;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">🏠 Головна</a>
+        <a href="exercises.html">💪 Вправи</a>
+        <a href="beginners.html">🌟 Для новачків</a>
+    </nav>
+
+    <h2>💪 Вправи на м'язи</h2>
+    <div class="muscle-group">
+        <div class="exercises-grid">
+            <div class="card"><img src="https://i.imgur.com/5zL9pQm.jpg"><h3>Присідання з бантиком</h3></div>
+            <div class="card"><img src="https://i.imgur.com/X8vK9pL.jpg"><h3>Випади</h3></div>
+            <div class="card"><img src="https://i.imgur.com/9pLmXqR.jpg"><h3>Місток для сідниць</h3></div>
+            <div class="card"><img src="https://i.imgur.com/vX9kPqM.jpg"><h3>Підйом ніг</h3></div>
+            <div class="card"><img src="https://i.imgur.com/kP9mLqR.jpg"><h3>Ходьба на шкарпетках</h3></div>
+        </div>
+    </div>
+
+    <h2>❤️ Кардіо та Танці</h2>
+    <div class="muscle-group">
+        <div class="exercises-grid">
+            <div class="card"><img src="https://i.imgur.com/8LmXqKp.jpg"><h3>K-Pop Танці</h3></div>
+            <div class="card"><img src="https://i.imgur.com/pQ9kLmX.jpg"><h3>Стрибки зі скакалкою</h3></div>
+            <div class="card"><img src="https://i.imgur.com/Xm9pLqR.jpg"><h3>Веселе кардіо</h3></div>
+            <div class="card"><img src="https://i.imgur.com/9vKpLmX.jpg"><h3>Танцювальні рухи</h3></div>
+            <div class="card"><img src="https://i.imgur.com/Lp9kXmQ.jpg"><h3>Біг на місці</h3></div>
+        </div>
+    </div>
+
+</body>
+</html>
