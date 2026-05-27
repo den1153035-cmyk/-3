@@ -20,7 +20,6 @@
             display: flex;
             justify-content: center;
             gap: 40px;
-            flex-wrap: wrap;
             box-shadow: 0 5px 15px rgba(255,105,180,0.4);
             position: sticky;
             top: 0;
@@ -34,13 +33,9 @@
             font-weight: 700;
             padding: 10px 20px;
             border-radius: 30px;
-            transition: all 0.3s;
         }
 
-        nav a:hover {
-            background: white;
-            color: #ff1493;
-        }
+        nav a:hover { background: white; color: #ff1493; }
 
         h2 { 
             text-align: center; 
@@ -49,11 +44,7 @@
             font-size: 2.8rem; 
         }
 
-        .content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .content { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         .tips {
             background: white;
@@ -73,7 +64,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
-            margin-top: 30px;
         }
 
         .card {
@@ -81,7 +71,11 @@
             border-radius: 25px;
             overflow: hidden;
             border: 6px solid #ff8ec8;
+            cursor: pointer;
+            transition: 0.4s;
         }
+
+        .card:hover { transform: translateY(-10px); }
 
         .card img {
             width: 100%;
@@ -91,9 +85,39 @@
 
         .card h3 {
             padding: 15px;
-            text-align: center;
             background: #ffe4f3;
             color: #c71585;
+            text-align: center;
+        }
+
+        /* Модальне вікно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 30px;
+            border: 8px solid #ff69b4;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            cursor: pointer;
+            color: #ff1493;
         }
     </style>
 </head>
@@ -107,7 +131,6 @@
 
     <div class="content">
         <h2>🌟 Поради для новачків</h2>
-        
         <div class="tips">
             <ul>
                 <li>🎀 Почни з 2–3 тренувань на тиждень</li>
@@ -115,19 +138,49 @@
                 <li>💖 Пий багато води</li>
                 <li>🌸 Дихай правильно</li>
                 <li>🎀 Якщо болить — зупинись</li>
-                <li>💕 Усміхайся під час тренування</li>
             </ul>
         </div>
 
         <h2>Прості вправи для початківців</h2>
         <div class="exercises-grid">
-            <div class="card"><img src="https://i.imgur.com/5zL9pQm.jpg"><h3>Присідання біля стіни</h3></div>
-            <div class="card"><img src="https://i.imgur.com/X8vK9pL.jpg"><h3>Випади на місці</h3></div>
-            <div class="card"><img src="https://i.imgur.com/m9KpLqX.jpg"><h3>Планка на колінах</h3></div>
-            <div class="card"><img src="https://i.imgur.com/Xp9LmKq.jpg"><h3>Скручування</h3></div>
-            <div class="card"><img src="https://i.imgur.com/8LmXqKp.jpg"><h3>Танці під пісню</h3></div>
+            <div class="card" onclick="showExercise('Присідання біля стіни', 'Притулись спиною до стіни і повільно присідай, ніби сідаєш на уявний стілець. Тримай 10–15 секунд.')">
+                <img src="https://i.imgur.com/5zL9pQm.jpg"><h3>Присідання біля стіни</h3>
+            </div>
+            <div class="card" onclick="showExercise('Випади на місці', 'Зроби крок вперед і опустися. Повернися назад. По 8 разів на кожну ногу.')">
+                <img src="https://i.imgur.com/X8vK9pL.jpg"><h3>Випади на місці</h3>
+            </div>
+            <div class="card" onclick="showExercise('Планка на колінах', 'Стань в планку на колінах. Тримай тіло рівно 20–30 секунд.')">
+                <img src="https://i.imgur.com/m9KpLqX.jpg"><h3>Планка на колінах</h3>
+            </div>
+            <div class="card" onclick="showExercise('Танці під пісню', 'Увімкни улюблену пісню і танцюй як хочеш. Головне — рухайся!')">
+                <img src="https://i.imgur.com/8LmXqKp.jpg"><h3>Танці під пісню</h3>
+            </div>
         </div>
     </div>
 
+    <!-- Модальне вікно -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <h2 id="modalTitle" style="color:#ff1493; text-align:center;"></h2>
+            <p id="modalDesc" style="font-size:1.3rem; line-height:1.7;"></p>
+        </div>
+    </div>
+
+    <script>
+        function showExercise(title, description) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = description;
+            document.getElementById('exerciseModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('exerciseModal').style.display = 'none';
+        }
+
+        document.getElementById('exerciseModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
 </body>
 </html>
